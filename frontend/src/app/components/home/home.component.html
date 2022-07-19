@@ -1,0 +1,33 @@
+<div class="container">
+    <!--
+        https://angular.io/api/router/RouterLink
+        RouterLink DIRECTIVE
+        When applied to an element in a template, makes that element a link 
+        that initiates navigation to a route. Navigation opens one or more 
+        routed components in one or more <router-outlet> locations on the page.
+    -->
+    <button class="btn btn-primary" [routerLink]="['/add']">Agregar</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Tarea</th>
+                <th scope="col">Finalizado</th>
+                <th class="text-center">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tarea of lista">
+                <td>{{tarea.id}}</td>
+                <td>{{tarea.tarea}}</td>
+                <td>{{tarea.finalizado?"Sí":"No"}}</td>
+                <td class="text-center">
+                    <button class="btn btn-danger btn-sm mx-1" (click)="delete(tarea.id)">Eliminar</button>
+                    <button class="btn btn-warning btn-sm mx-1" [routerLink]="['/edit',tarea.id]">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

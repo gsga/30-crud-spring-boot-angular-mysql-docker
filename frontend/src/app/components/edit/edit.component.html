@@ -1,0 +1,33 @@
+<div class="container">
+    <!--
+    https://stackoverflow.com/a/1397620/2740402
+    id is used to identify the HTML element through the 
+    Document Object Model (via JavaScript or styled 
+    with CSS). id is expected to be unique within the page.
+    name corresponds to the form element and 
+    identifies what is posted back to the server.
+
+    NgModel DIRECTIVE
+    https://angular.io/api/forms/NgModel#ngmodel
+    Creates a FormControl instance from a domain model 
+    and binds it to a form control element.
+
+    It accepts a domain model as an optional Input. 
+    If you have a one-way binding to ngModel with [] syntax, 
+    changing the domain model's value in the component 
+    class sets the value in the view. 
+    If you have a two-way binding with [()] syntax (also known 
+    as 'banana-in-a-box syntax'), the value in the UI 
+    always syncs back to the domain model in your class.
+    -->
+    <form action="">
+        <label for="tarea">Tarea</label>
+        <input type="text" id="tarea" name="tarea" [(ngModel)]="tarea.tarea">
+        <br>
+        <label for="finalizado">Finalizado</label>
+        <input type="checkbox" id="finalizado" name="finalizado" [(ngModel)]="tarea.finalizado">
+        <br>
+        <button class="btn btn-primary" (click)="saveTarea();">Guardar</button>
+    </form>
+
+</div>
