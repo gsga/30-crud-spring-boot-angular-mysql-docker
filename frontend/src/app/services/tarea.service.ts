@@ -7,6 +7,8 @@ https://angular.io/api/core/Injectable
 Decorator that marks a class as available to be provided and injected as a dependency.
 providedIn Determines which injectors will provide the injectable.
 'root' : The application-level injector in most apps.
+Esta clase estará disponible para inyección de 
+dependencias, y será provista en 
 */
 @Injectable({
   providedIn: 'root'

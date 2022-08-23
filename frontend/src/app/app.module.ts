@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 /*
-Estas son las clases que exportan todos los módulos
+Estas son las clases que exportan todos los componentes
 que hemos creado nosotros para nuestra aplicación.
 */
 import { AppComponent } from './app.component';
