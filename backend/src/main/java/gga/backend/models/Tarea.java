@@ -7,16 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+// @Entity
+// https://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html
+// Identifies a class as an entity class. Specifies that the class is an entity. 
+// This annotation is applied to the entity class.
 // https://thorben-janssen.com/key-jpa-hibernate-annotations/
 // Define an Entity Class
 // JPA entities don’t need to implement any interface or extend a superclass. 
 // They are simple POJOs (Plain Old Java Object). But you still need to 
 // identify a class as an entity class, and you might want to adapt 
 // the default table mapping.
-// @Entity
-// https://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html
-// Identifies a class as an entity class. Specifies that the class is an entity. 
-// This annotation is applied to the entity class.
 @Entity
 // @Table
 // https://docs.oracle.com/javaee/7/api/javax/persistence/Table.html

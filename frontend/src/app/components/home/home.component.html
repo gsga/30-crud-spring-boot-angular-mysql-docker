@@ -19,7 +19,23 @@
             </tr>
         </thead>
         <tbody>
+            <!-- 
+                https://angular.io/api/common/NgForOf
+                NgForOf
+                Una directiva estructural que entrega un template
+                para cada elemento de una colección. La directiva 
+                se coloca en un elemento, que se convierte en el 
+                padre de las plantillas clonadas.
+                tarea es cada uno de los elementos de lista. Y para
+                cada tarea se especializará el template.
+                lista es una propiedad definida en la clase de este
+                componente. Es un array de tipo any.
+            -->
             <tr *ngFor="let tarea of lista">
+                <!--
+                    Este es el template que se va a producir
+                    especializado para cada tarea de lista.
+                -->
                 <td>{{tarea.id}}</td>
                 <td>{{tarea.tarea}}</td>
                 <td>{{tarea.finalizado?"Sí":"No"}}</td>

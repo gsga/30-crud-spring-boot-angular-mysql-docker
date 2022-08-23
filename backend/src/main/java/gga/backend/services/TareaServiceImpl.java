@@ -75,14 +75,38 @@ public class TareaServiceImpl implements TareaService {
     @Autowired
     private TareaRepository tareaRepository;
 
+    /*
+     * @Override La anotación @Override informa al compilador
+     * que el elemento está destinado a override un elemento
+     * declarado en una superclase.
+     * Si bien no es necesario usar esta anotación al
+     * override un método, ayuda a evitar errores.
+     * Si un método marcado con @Override no puede
+     * override correctamente un método en una de sus
+     * superclases, el compilador genera un error.
+     */
     @Override
+
+    /*
+     * https://stackoverflow.com/a/54326467/2740402
+     * Generalmente, la anotación @Transactional
+     * se escribe en el nivel de servicio. Se utiliza
+     * para combinar más de una escritura en una base
+     * de datos como una sola operación atómica.
+     * Cuando alguien llama al método anotado con
+     * 
+     * @Transactional, se ejecutan todas o ninguna
+     * de las escrituras en la base de datos. En el
+     * caso de operaciones de lectura no es útil y
+     * tampoco lo es en el caso de una sola escritura
+     * atómica.
+     */
     @Transactional(readOnly = false)
     public void deleteById(Long id) {
         tareaRepository.deleteById(id);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Tarea> findAll() {
         return (List<Tarea>) tareaRepository.findAll();
     }
@@ -91,7 +115,6 @@ public class TareaServiceImpl implements TareaService {
     // Notar el tipo de retorno: Optional<Tarea>
     // Viene directamente de la plataforma.
     @Override
-    @Transactional(readOnly = true)
     public Optional<Tarea> findById(Long id) {
         return tareaRepository.findById(id);
     }

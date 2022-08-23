@@ -1,13 +1,22 @@
+<!--
+Interpolación de variables. Lo que está entre
+las dobles llaves {{}} es la variable title,
+cuyo valor se establece en la clase, y acá
+es interpolado.
+-->
 <h1>{{title}}</h1>
 <hr>
 <!--
 https://angular.io/api/router/RouterOutlet
 RouterOutlet DIRECTIVE
-Acts as a placeholder that Angular dynamically fills based on 
-the current router state.
-The <router-outlet> tells the router where to display routed views.
-The RouterOutlet is one of the router directives that became 
-available to the AppComponent because AppModule imports 
-AppRoutingModule which exported RouterModule. 
+Actúa como un marcador de posición que Angular 
+dinámicamente llena según el estado actual 
+del enrutador.
+El <router-outlet> le dice al enrutador dónde
+para mostrar las vistas enrutadas. El RouterOutlet
+es una de las directivas de enrutador 
+disponibles para AppComponent porque
+AppModule importa AppRoutingModule que a su vez
+exporta RouterModule.
 -->
 <router-outlet></router-outlet>

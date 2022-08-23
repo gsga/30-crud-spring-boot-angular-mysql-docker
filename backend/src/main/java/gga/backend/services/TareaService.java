@@ -15,13 +15,12 @@ package gga.backend.services;
 // promete.
 
 // Los nombres de los métodos que expone son iguales a los de la
-// inerfaz CrudRepository. Pero no la extiende. 
-// No estoy seguro en este momento, pero pienso que si esta interfaz
+// interfaz CrudRepository. Pero no la extiende. Si esta interfaz
 // extendiera CrudRepository, terminaríamos inyectando una dependencia
 // que no necesitamos en este paquete, porque está en el paquete 
 // repositories. 
 // El instinto me dice que es mejor usar los mismos nombres con las 
-// mismas signaturas. Pero no es obligatorio.
+// mismas signaturas. Creo que es mejor estilo. Pero no es obligatorio.
 
 import java.util.List;
 import java.util.Optional;
@@ -34,8 +33,8 @@ public interface TareaService {
 
     public List<Tarea> findAll();
 
-    public Tarea save(Tarea tarea);
-
     public Optional<Tarea> findById(Long id);
+
+    public Tarea save(Tarea tarea);
 
 }
