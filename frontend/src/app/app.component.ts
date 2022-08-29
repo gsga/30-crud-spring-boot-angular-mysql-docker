@@ -25,5 +25,5 @@ que se usa con el mecamismo de interpolación,
 en el template de este compoente.
 */
 export class AppComponent {
-  title = 'CRUD básico';
+  title = 'Administrador de tareas';
 }

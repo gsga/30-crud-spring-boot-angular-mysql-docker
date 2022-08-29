@@ -1,0 +1,63 @@
+services:
+  # Versión de
+  # https://youtu.be/6hMHziv0T2Y
+  # Dockerize Spring Boot Application with MySQL using Docker compose
+  mysqldb:
+    # Solo en Linux. En Windows no va. ¡JA ja ja !
+    # platforn: linux/x86_64
+    image: mysql:8.0.30-debian
+    restart: always
+    # https://stackoverflow.com/questions/45729326/how-to-change-the-default-character-set-of-mysql-using-docker-compose
+    # command:
+    #   [
+    #     'mysqld',
+    #     '--character-set-server=utf8mb4',
+    #     '--collation-server=utf8mb4_0900_ai_ci',
+    #     '--init-connect="SET NAMES UTF8;"',
+    #     '--innodb-flush-log-at-trx-commit=0'
+    #   ]
+    # https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_init_connect
+    # command: mysqld --character-set-server=utf8mb4 --init-connect="SET NAMES UTF8"
+    #  --default_character_set=utf8mb4
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: tareas
+      MYSQL_USER: tareasuser
+      MYSQL_PASSWORD: tareaspassword
+      # Mandatorio, pero puede ser cualquier cosa
+      MYSQL_ROOT_PASSWORD: 123456
+    # Este script se va a ejecutar la primera vez, y es un modo de
+    # inicializar la base de datos. Esto lo podría hacer manualmente,
+    # pero de este modo es automático.
+    volumes:
+      - ./backend/sql/mycustom.cnf:/etc/mysql/conf.d/custom.cnf
+      - ./backend/sql/tareas.sql:/docker-entrypoint-initdb.d/1.sql
+  backend:
+    # https://docs.docker.com/compose/compose-file/#build
+    # build specifies the build configuration for creating 
+    # container image from source, as defined in 
+    # the Build support documentation.
+    # Esta sintaxis es una de las dos posibles.
+    # El punto (.) es (DEBE SER) el path a un directorio
+    # (DEBE SER UN DIRECTORIO) que contenga un Dockerfile
+    # en el cual se establece el contexto.
+    build: ./backend
+    # Este servicio depende de mysqldb. Si la base de datos no arrancó,
+    # no se puede conectar. Pero puede pasar que no haya nada mal,
+    # y que solo necesite más tiempo. Por eso le digo que siga intentando
+    # arrancar hasta que pueda.
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      # acá va el nombre de un servicio, no de un container
+      - mysqldb
+  frontend:
+    container_name: angular
+    build: ./frontend
+    ports:
+      - 80:4200
+    depends_on:
+      # acá va el nombre de un servicio, no de un container
+      - backend
